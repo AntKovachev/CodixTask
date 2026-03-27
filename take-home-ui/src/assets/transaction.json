@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "date": "2025-03-01",
+    "name": "Georgi Petrov",
+    "city": "Sofia",
+    "bic": "BNBGBGSD",
+    "bankCard": "4532 **** **** 1234",
+    "amount": 1500.00,
+    "type": "Credit",
+    "status": "Completed"
+  },
+  {
+    "id": 2,
+    "date": "2025-03-05",
+    "name": "Maria Ivanova",
+    "city": "Plovdiv",
+    "bic": "RZBBGSF",
+    "bankCard": "4716 **** **** 5588",
+    "amount": 340.50,
+    "type": "Debit",
+    "status": "Pending"
+  }
+]
