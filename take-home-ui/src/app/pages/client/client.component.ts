@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { delay } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { Client } from '../../models/client.model';
 import { CLIENT_FIELD_CONFIG, ClientFieldConfig } from '../../config/config';
@@ -20,7 +21,7 @@ export class ClientComponent implements OnInit {
   constructor(private clientService: ClientService) {}
 
   ngOnInit(): void {
-    this.clientService.getClient().subscribe({
+    this.clientService.getClient().pipe(delay(750)).subscribe({
       next: (data) => {
         this.client = data;
         this.isReady = true;
