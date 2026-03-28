@@ -5,11 +5,12 @@ import { ClientService } from '../../services/client.service';
 import { Transaction } from '../../models/transaction.model';
 import { AmountPipe } from '../../pipes/amount.pipe';
 import { DateFormatPipe } from '../../pipes/date-format.pipe';
+import { TransactionModalComponent } from '../../components/transaction-modal/transaction-modal.component';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [FormsModule, AmountPipe, DateFormatPipe],
+  imports: [FormsModule, AmountPipe, DateFormatPipe, TransactionModalComponent],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
@@ -18,6 +19,15 @@ export class TransactionsComponent implements OnInit {
   filterQuery = '';
   isReady = false;
   error = '';
+  selectedTransaction: Transaction | null = null;
+
+  openModal(transaction: Transaction): void {
+    this.selectedTransaction = transaction;
+  }
+
+  closeModal(): void {
+    this.selectedTransaction = null;
+  }
 
   constructor(private clientService: ClientService) {}
 

@@ -1,0 +1,66 @@
+<div class="overlay" (click)="close.emit()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Transaction Details</h2>
+      <button class="close-btn" (click)="close.emit()" aria-label="Close">&#x2715;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="detail-section">
+        <h3 class="section-title">Transaction</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">ID</span>
+            <span class="detail-value">#{{ transaction.id }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Date</span>
+            <span class="detail-value">{{ transaction.date | dateFormat }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Type</span>
+            <span class="detail-value">{{ transaction.type }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Amount</span>
+            <span class="detail-value amount">{{ transaction.amount | amount }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Status</span>
+            <span [class]="'status status-' + transaction.status.toLowerCase()">
+              {{ transaction.status }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3 class="section-title">Sender</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">Name</span>
+            <span class="detail-value">{{ transaction.name }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">City</span>
+            <span class="detail-value">{{ transaction.city }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h3 class="section-title">Banking</h3>
+        <div class="detail-grid">
+          <div class="detail-item">
+            <span class="detail-label">BIC</span>
+            <span class="detail-value monospace">{{ transaction.bic }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Bank Card</span>
+            <span class="detail-value monospace">{{ transaction.bankCard }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

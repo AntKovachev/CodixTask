@@ -124,3 +124,21 @@ tbody tr:hover {
   border-radius: 6px;
   border: 1px solid #f5c6cb;
 }
+
+.details-btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a6cf7;
+  background: #f4f6ff;
+  border: 1.5px solid #c5d0ff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.details-btn:hover {
+  background: #e6ebff;
+  border-color: #4a6cf7;
+}
