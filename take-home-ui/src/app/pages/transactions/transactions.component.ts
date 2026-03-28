@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { delay } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { Transaction } from '../../models/transaction.model';
+import { AmountPipe } from '../../pipes/amount.pipe';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, AmountPipe],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
