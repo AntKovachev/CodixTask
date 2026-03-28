@@ -1,1 +1,30 @@
-<p>client works!</p>
+@if (error) {
+  <div class="error-message">{{ error }}</div>
+}
+
+@if (!isReady && !error) {
+  <div class="loading">Loading...</div>
+}
+
+@if (isReady && client) {
+  <div class="form-container">
+    <h2>Client Information</h2>
+    <form #clientForm="ngForm">
+      <div class="form-grid">
+        @for (field of fields; track field.key) {
+          <div class="form-field">
+            <label [for]="field.key">{{ field.label }}</label>
+            <input
+              [id]="field.key"
+              [name]="field.key"
+              [type]="field.type"
+              [(ngModel)]="client[field.key]"
+              [readonly]="field.readonly"
+              [class.readonly]="field.readonly"
+            />
+          </div>
+        }
+      </div>
+    </form>
+  </div>
+}
