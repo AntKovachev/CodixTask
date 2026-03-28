@@ -1,6 +1,6 @@
 # CodixTask – Take-Home UI
 
-A client information and transactions dashboard built with Angular 17.
+A client information and transactions dashboard built with **Angular 17.3** (Angular CLI 17.3.17).
 
 ## Requirements
 
