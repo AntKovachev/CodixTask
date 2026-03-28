@@ -13,6 +13,15 @@
   <div class="table-container">
     <h2>Transactions</h2>
 
+    <div class="filter-bar">
+      <input
+        type="text"
+        [(ngModel)]="filterQuery"
+        placeholder="Filter by name or status..."
+        class="filter-input"
+      />
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -28,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (transaction of transactions; track transaction.id) {
+        @for (transaction of filteredTransactions; track transaction.id) {
           <tr>
             <td>{{ transaction.id }}</td>
             <td>{{ transaction.date }}</td>

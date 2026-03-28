@@ -15,6 +15,28 @@ h2 {
   padding-bottom: 0.75rem;
 }
 
+.filter-bar {
+  margin-bottom: 1.25rem;
+}
+
+.filter-input {
+  width: 100%;
+  max-width: 360px;
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+
+.filter-input:focus {
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.12);
+  background: #fff;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
