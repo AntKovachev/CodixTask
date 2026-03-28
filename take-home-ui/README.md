@@ -17,6 +17,18 @@ ng serve
 
 Navigate to `http://localhost:4200`. The app redirects to `/client` by default.
 
+## Running tests
+
+```bash
+ng test
+```
+
+Runs the full test suite in watch mode using Karma + Jasmine. For a single run:
+
+```bash
+ng test --watch=false
+```
+
 ## Features
 
 - **Client page** (`/client`) — displays client details in a dynamic form rendered from a field config. Editable fields have live validation (required, email format, minimum length). Read-only fields (account number, bank card) are clearly distinguished.
