@@ -1,50 +1,83 @@
 @if (error) {
-  <div class="error-message">{{ error }}</div>
+  <div class="page-error">⚠ {{ error }}</div>
 }
 
 @if (!isReady && !error) {
-  <div class="loading">Loading...</div>
+  <div class="loading">
+    <div class="spinner"></div>
+    <span>Loading client data...</span>
+  </div>
 }
 
 @if (isReady && client) {
   <div class="form-container">
     <h2>Client Information</h2>
+
     <form #clientForm="ngForm">
-      <div class="form-grid">
-        @for (field of fields; track field.key) {
-          <div class="form-field">
-            <label [for]="field.key">
-              {{ field.label }}
-              @if (field.required) {<span class="required-mark">*</span>}
-            </label>
-            <input
-              #input="ngModel"
-              [id]="field.key"
-              [name]="field.key"
-              [type]="field.type"
-              [(ngModel)]="client[field.key]"
-              [readonly]="field.readonly"
-              [class.readonly]="field.readonly"
-              [class.invalid]="input.touched && input.invalid"
-              [required]="field.required ?? false"
-              [email]="field.type === 'email'"
-              [minlength]="field.minLength ?? null"
-            />
-            @if (input.touched && input.errors?.['required']) {
-              <span class="field-error">{{ field.label }} is required</span>
+
+      <div class="form-section">
+        <h3 class="section-title">Personal Details</h3>
+        <div class="form-grid">
+          @for (field of fields; track field.key) {
+            @if (!field.readonly) {
+              <div class="form-field">
+                <label [for]="field.key">
+                  {{ field.label }}
+                  @if (field.required) {<span class="required-mark">*</span>}
+                </label>
+                <input
+                  #input="ngModel"
+                  [id]="field.key"
+                  [name]="field.key"
+                  [type]="field.type"
+                  [(ngModel)]="client[field.key]"
+                  [class.invalid]="input.touched && input.invalid"
+                  [class.valid]="input.touched && input.valid"
+                  [required]="field.required ?? false"
+                  [email]="field.type === 'email'"
+                  [minlength]="field.minLength ?? null"
+                />
+                @if (input.touched && input.errors?.['required']) {
+                  <span class="field-error">{{ field.label }} is required</span>
+                }
+                @if (input.touched && input.errors?.['email']) {
+                  <span class="field-error">Please enter a valid email address</span>
+                }
+                @if (input.touched && input.errors?.['minlength']) {
+                  <span class="field-error">Minimum {{ field.minLength }} characters required</span>
+                }
+              </div>
             }
-            @if (input.touched && input.errors?.['email']) {
-              <span class="field-error">Please enter a valid email address</span>
-            }
-            @if (input.touched && input.errors?.['minlength']) {
-              <span class="field-error">{{ field.label }} must be at least {{ field.minLength }} characters</span>
-            }
-          </div>
-        }
+          }
+        </div>
       </div>
+
+      <div class="form-section">
+        <h3 class="section-title">Account Details</h3>
+        <div class="form-grid">
+          @for (field of fields; track field.key) {
+            @if (field.readonly) {
+              <div class="form-field">
+                <label [for]="field.key">{{ field.label }}</label>
+                <input
+                  [id]="field.key"
+                  [name]="field.key"
+                  [type]="field.type"
+                  [(ngModel)]="client[field.key]"
+                  readonly
+                  class="readonly"
+                />
+              </div>
+            }
+          }
+        </div>
+      </div>
+
       <div class="form-actions">
+        <span class="form-hint">* Required fields</span>
         <button type="submit" [disabled]="clientForm.invalid">Save Changes</button>
       </div>
+
     </form>
   </div>
 }
