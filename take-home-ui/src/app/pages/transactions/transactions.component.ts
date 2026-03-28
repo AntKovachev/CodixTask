@@ -4,11 +4,12 @@ import { delay } from 'rxjs';
 import { ClientService } from '../../services/client.service';
 import { Transaction } from '../../models/transaction.model';
 import { AmountPipe } from '../../pipes/amount.pipe';
+import { DateFormatPipe } from '../../pipes/date-format.pipe';
 
 @Component({
   selector: 'app-transactions',
   standalone: true,
-  imports: [FormsModule, AmountPipe],
+  imports: [FormsModule, AmountPipe, DateFormatPipe],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
