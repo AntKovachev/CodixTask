@@ -1,1 +1,47 @@
-<p>transactions works!</p>
+@if (error) {
+  <div class="page-error">⚠ {{ error }}</div>
+}
+
+@if (!isReady && !error) {
+  <div class="loading">
+    <div class="spinner"></div>
+    <span>Loading transactions...</span>
+  </div>
+}
+
+@if (isReady) {
+  <div class="table-container">
+    <h2>Transactions</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>BIC</th>
+          <th>Bank Card</th>
+          <th>Amount</th>
+          <th>Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (transaction of transactions; track transaction.id) {
+          <tr>
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.name }}</td>
+            <td>{{ transaction.city }}</td>
+            <td>{{ transaction.bic }}</td>
+            <td>{{ transaction.bankCard }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.type }}</td>
+            <td>{{ transaction.status }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
