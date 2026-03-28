@@ -46,6 +46,31 @@ tbody tr:hover {
   background: #f9faff;
 }
 
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status-completed {
+  background: #e6f9f0;
+  color: #1a7f4b;
+}
+
+.status-pending {
+  background: #fff8e1;
+  color: #b07c00;
+}
+
+.status-failed {
+  background: #fdecea;
+  color: #c0392b;
+}
+
 .loading {
   display: flex;
   flex-direction: column;

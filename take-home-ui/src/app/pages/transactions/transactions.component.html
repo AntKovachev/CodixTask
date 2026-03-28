@@ -38,7 +38,11 @@
             <td>{{ transaction.bankCard }}</td>
             <td>{{ transaction.amount }}</td>
             <td>{{ transaction.type }}</td>
-            <td>{{ transaction.status }}</td>
+            <td>
+              <span [class]="'status status-' + transaction.status.toLowerCase()">
+                {{ transaction.status }}
+              </span>
+            </td>
           </tr>
         }
       </tbody>
