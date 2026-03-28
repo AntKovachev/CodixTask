@@ -13,17 +13,37 @@
       <div class="form-grid">
         @for (field of fields; track field.key) {
           <div class="form-field">
-            <label [for]="field.key">{{ field.label }}</label>
+            <label [for]="field.key">
+              {{ field.label }}
+              @if (field.required) {<span class="required-mark">*</span>}
+            </label>
             <input
+              #input="ngModel"
               [id]="field.key"
               [name]="field.key"
               [type]="field.type"
               [(ngModel)]="client[field.key]"
               [readonly]="field.readonly"
               [class.readonly]="field.readonly"
+              [class.invalid]="input.touched && input.invalid"
+              [required]="field.required ?? false"
+              [email]="field.type === 'email'"
+              [minlength]="field.minLength ?? null"
             />
+            @if (input.touched && input.errors?.['required']) {
+              <span class="field-error">{{ field.label }} is required</span>
+            }
+            @if (input.touched && input.errors?.['email']) {
+              <span class="field-error">Please enter a valid email address</span>
+            }
+            @if (input.touched && input.errors?.['minlength']) {
+              <span class="field-error">{{ field.label }} must be at least {{ field.minLength }} characters</span>
+            }
           </div>
         }
+      </div>
+      <div class="form-actions">
+        <button type="submit" [disabled]="clientForm.invalid">Save Changes</button>
       </div>
     </form>
   </div>
