@@ -9,7 +9,7 @@ import { Transaction } from '../models/transaction.model';
 })
 export class ClientService {
   private clientUrl = 'assets/client.json';
-  private transactionsUrl = 'assets/transaction.json';
+  private transactionsUrl = 'assets/transactions.json';
 
   constructor(private http: HttpClient) {}
 
