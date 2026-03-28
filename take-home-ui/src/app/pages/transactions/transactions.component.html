@@ -40,7 +40,7 @@
         @for (transaction of filteredTransactions; track transaction.id) {
           <tr>
             <td>{{ transaction.id }}</td>
-            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.date | dateFormat }}</td>
             <td>{{ transaction.name }}</td>
             <td>{{ transaction.city }}</td>
             <td>{{ transaction.bic }}</td>
